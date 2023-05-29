@@ -36,6 +36,12 @@ public class TaskController {
         List<Task> tasks = taskService.getTasks();
         return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
     }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTask(@PathVariable  long id){
+        taskService.deleteTask(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Task> getTask(@PathVariable Long id){
